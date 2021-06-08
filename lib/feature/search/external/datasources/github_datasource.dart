@@ -1,6 +1,6 @@
 import 'package:clean_architeture/feature/search/domain/errors/errors_search.dart';
 import 'package:clean_architeture/feature/search/infra/interfaces/i_datasource.dart';
-import 'package:clean_architeture/feature/search/infra/models/result_search_model.dart';
+import 'package:clean_architeture/feature/search/infra/models/github_search_model.dart';
 import 'package:dio/dio.dart';
 
 class GithubDataSource implements IDataSource {
@@ -10,7 +10,7 @@ class GithubDataSource implements IDataSource {
   GithubDataSource(this.dio);
 
   @override
-  Future<List<ResultSearchModel>>? searchText(String? searchText) async {
+  Future<List<GithubResultSearchModel>>? searchText(String? searchText) async {
     if (searchText != null) {
       var response = await dio.get(
           'https://api.github.com/search/users?q=${searchText.trim().replaceAll(' ', '+')}');
@@ -18,7 +18,7 @@ class GithubDataSource implements IDataSource {
         List list = response.data["items"];
 
         var resultList = list
-            .map((result) => ResultSearchModel(result["login"],
+            .map((result) => GithubResultSearchModel(result["login"],
                 avatarUrl: result["avatarUrl"],
                 bio: result["bio"],
                 email: result["email"],

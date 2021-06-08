@@ -1,4 +1,4 @@
-import 'package:clean_architeture/feature/search/infra/viewmodel/search_view_model.dart';
+import 'package:clean_architeture/feature/search/presenter/viewmodel/search_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,14 +10,7 @@ class Test extends GetView<SearchViewModel> {
     return Scaffold(
       body: Center(
         child: TextButton(
-          onPressed: () async {
-            print(controller.list);
-            await controller.getUsers('durvalperipato');
-
-            controller.list.forEach((element) {
-              print(element.login);
-            });
-          },
+          onPressed: () async {},
           child: Text('Vamos Lá'),
         ),
       ),
