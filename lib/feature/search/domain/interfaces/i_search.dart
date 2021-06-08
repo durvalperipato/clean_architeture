@@ -1,3 +1,3 @@
 abstract class ISearch {
-  Future<dynamic> getUsers(String searchText);
+  Future<dynamic>? getUsers(String searchText);
 }

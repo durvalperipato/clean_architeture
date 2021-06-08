@@ -1,20 +1,19 @@
-/* import 'package:clean_architeture/feature/search/domain/usecases/search_by_text.dart';
-import 'package:clean_architeture/feature/search/infra/interfaces/i_datasource.dart';
+import 'package:clean_architeture/feature/search/domain/interfaces/i_search.dart';
 import 'package:clean_architeture/feature/search/infra/models/result_search_model.dart';
 import 'package:clean_architeture/feature/search/presenter/viewmodel/search_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class GithubDatasourceMock extends Mock implements IDataSource {}
+class SearchByTextMock extends Mock implements ISearch {}
 
 void main() {
-  final viewmodel = SearchViewModel();
+  final usecase = SearchByTextMock();
+  final viewmodel = SearchViewModel(usecase);
 
   test('Should return a list of ResultSearchModel', () async {
-    when(datasource.searchText('test'))
+    when(usecase.getUsers('test'))
         .thenAnswer((_) async => <ResultSearchModel>[]);
-    //var result = await viewmodel.getUsers('test');
-    //expect(result, isA<List<ResultSearch>>());
+    await viewmodel.makeSearch('test');
+    expect(viewmodel.list, isA<List<ResultSearchModel>>());
   });
 }
- */
