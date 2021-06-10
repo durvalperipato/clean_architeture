@@ -13,7 +13,7 @@ class YoutubeDataSource implements IDataSource {
     List<YoutubeSearchModel> resultList;
     if (searchText != null) {
       var response = await dio.get(
-          'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$searchText&key=AIzaSyAOdOEngMVfqPgzr3DNziNauyf0MZcbmpw');
+          'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$searchText&key={MY_API_KEY}');
       if (response.statusCode == 200) {
         List list = response.data["items"];
 
